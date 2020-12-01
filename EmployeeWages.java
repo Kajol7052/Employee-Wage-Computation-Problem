@@ -14,12 +14,12 @@ public class EmployeeWages {
                 System.out.println(empCheck);
                 if(empCheck == IS_FULL_TIME)
                 {
-			empHours=8;
+			empHours=8; // FullTime
                         //System.out.println("Present");
                 }
                 else
                 {
-			empHours=0;
+			empHours=4; // PartTime
                         //System.out.println("Absent");
                 }
 		int salary = empHours*RATE_PER_HOUR;
