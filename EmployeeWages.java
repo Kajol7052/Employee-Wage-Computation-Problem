@@ -25,7 +25,11 @@ public class EmployeeWages {
         	default:
         		break;
         }
-		int salary = empHours*RATE_PER_HOUR;
-        	System.out.println("Salary is : " + salary);
+		int DAILY_WAGE = empHours*RATE_PER_HOUR;
+        	System.out.println("Salary is " + DAILY_WAGE);
+
+        	int WORKING_DAY_IN_A_MONTH = 20;
+        	int MONTHLY_WAGE = DAILY_WAGE*WORKING_DAY_IN_A_MONTH;
+        	System.out.println("Monthly Wages is " + MONTHLY_WAGE);
         }
 }
