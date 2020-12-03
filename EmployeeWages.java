@@ -4,42 +4,57 @@ public class EmployeeWages {
 	public static final int IS_PART_TIME = 1;
 	public static final int IS_FULL_TIME = 2;
 
+	private  final String company;
+       	private final int empRatePerHour;
+       	private final int numOfWorkingDays;
+       	private final int maxHoursPerMonth;
+       	private  int totalEmpWage;
 
-	public static int computeEmpWage(String company, int empRatePerHour, int numofWorkingDays, int maxHoursPerMonth) {
-      	int empHrs = 0;
-      	int totalWorkingDays = 0;
-      	int totalEmpHrs = 0;
-      	while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numofWorkingDays) {
-      	totalWorkingDays++;
-      	int empCheck = (int) Math.floor(Math.random() * 10) % 3;
-        	switch (empCheck) {
-           		case IS_PART_TIME:
-           			System.out.println("Employee is Present");
-           			empHrs = 4;
-           			break;
-           		case IS_FULL_TIME:
-           			System.out.println("Employee is Present");
-           			empHrs = 8;
-           			break;
-           		default:
-           			System.out.println("Employee is Absent");
-           			empHrs = 0;
-           	}
-           	totalEmpHrs += empHrs;
-           	System.out.println("Day: " + totalWorkingDays + "  Emp Hr: " +empHrs);
-         }
-           int totalEmpWage = totalEmpHrs * empRatePerHour;
-           System.out.println("Total Emp Wage for company: " +company+ " is: " +totalEmpWage);
-           System.out.println("\n");
-           return totalEmpWage;
-        }
+       	public EmployeeWages(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+        	this.company = company;
+        	this.empRatePerHour = empRatePerHour;
+		this.numOfWorkingDays = numOfWorkingDays;
+		this.maxHoursPerMonth = maxHoursPerMonth;
+	}
 
-        public static void main(String[] args) {
-        //computeEmpWage();
-        computeEmpWage("Dmart", 20, 2, 10);
-        computeEmpWage("Reliance", 25, 4, 18);
-        computeEmpWage("Google", 20, 5, 20);
-        computeEmpWage("Amazon", 15, 3,22);
-        computeEmpWage("Walmart", 30, 4, 15);
+       public void computeEmpWage() {
+       		int empHrs = 0;
+           	int totalWorkingDays = 0;
+           	int totalEmpHrs = 0;
+
+	 	while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
+         		totalWorkingDays++;
+         		int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+        		switch (empCheck) {
+           			case IS_PART_TIME:
+           				System.out.println("Employee is Present");
+           				empHrs = 4;
+           				break;
+           			case IS_FULL_TIME:
+           				System.out.println("Employee is Present");
+           				empHrs = 8;
+           				break;
+           			default:
+           				System.out.println("Employee is Absent");
+           				empHrs = 0;
+           			}
+           			totalEmpHrs += empHrs;
+         			System.out.println("Day: " + totalWorkingDays + "  Emp Hr: " +empHrs);
+		}
+	  	 totalEmpWage = totalEmpHrs * empRatePerHour;
+	}
+
+        @Override
+        public String toString() {
+           return "Total Emp Wage for Company: " + company + " is: " + totalEmpWage;
+       }
+
+	public static void main(String[] args) {
+        	EmployeeWages DMart = new EmployeeWages("Dmart",20,2,10);
+            	EmployeeWages Reliance = new EmployeeWages("Reliance", 10, 4, 20);
+  	    	DMart.computeEmpWage();
+	    	System.out.println(DMart);
+	    	Reliance.computeEmpWage();
+            	System.out.println(Reliance);
         }
 }
